@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# Demo Weather App For HomeSpotter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built as a demonstration application for HomeSpotter in Minneapolis, MN.
+
+Technology used includes:
+- React v17.0.1 
+- React Bootstrap
+- [Weather API](https://www.weatherapi.com/)
+- [Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart)
+
+It allows a user to enter a zipcode, and returns the current weather for that location in addition to a three-day forecast of low, high, and average temperatures.
+
+## Standout Features
+To add flexibility to the data returned by WeatherAPI, there is a toggle to switch between Fahrenheit and Celsius. This toggle is store in the state of `weatherForm.js` component, and will therefore trigger a re-render of the `weatherDisplay.js` component since state is passed to it as props. This allows the user to toggle between Fahrenheit and Celsius without having to reach back out to the WeatherAPI.
+
+There is one helper method, contained in `dateConvertor.js`. This allows for transformation of the forecast dates returned by WeatherAPI from a format of year/month/day (xxxx/xx/xx) to a more user friendly day/date (ex: Tue 08)
+
+`weatherForm.js` also utilizes local storage to persist the user's last search. The entire state object is sent to local storage upon successful return of the API data. Consequently, `componentDidMount()` is utilized to check for any store state in local storage and update the UI if it finds anything. 
 
 ## Available Scripts
 
@@ -14,10 +29,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -27,45 +38,19 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+This application is deployed to Google's Firebase. To deploy any changes after running `npm run build`, simply run `firebase deploy`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Environment Variables
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project uses environment variables to protect WeatherAPI keys. To add your own environment variable, follow these steps:
+- create an `.env` file in the root directory of this project
+- create this entry:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+``` javascript
+REACT_APP_WEATHERAPI_KEY=<yourkey>
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# homespotter-demo" 

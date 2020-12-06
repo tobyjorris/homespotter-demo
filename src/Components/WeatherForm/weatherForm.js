@@ -6,11 +6,25 @@ import WeatherDisplay from "../WeatherDisplay/weatherDisplay";
 class WeatherForm extends Component {
     state = {
         weather: null,
-        location: '',
+        zipCode: '',
         unit: 'fahrenheit',
         noLocationFound: false
     }
     baseURL = `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHERAPI_KEY}&days=4&q=`
+
+    componentDidMount() {
+        if (window.localStorage.getItem('state') !== null) {
+            const localState = JSON.parse(localStorage.getItem('state'));
+            console.log('localState', localState.unit)
+            this.setState(()=> ({
+                weather: localState.weather,
+                zipCode: localState.zipCode,
+                unit: localState.unit,
+                noLocationFound: localState.noLocationFound
+            }))
+        }
+        console.log(this.state)
+    }
 
     getWeatherInfo = async (location) => {
         const request = await fetch(this.baseURL + location)
@@ -28,14 +42,13 @@ class WeatherForm extends Component {
                 this.setState({noLocationFound: true})
             } else {
                 this.setState({weather: weatherData, noLocationFound: false});
+                const json = JSON.stringify(this.state)
+                localStorage.setItem('state', json)
             }
         })
     }
 
-    handleChange = (event) => {
-        const zipCode = event.target.value;
-        this.setState({zipCode: zipCode})
-    }
+    handleChange = (event) => {this.setState({zipCode: event.target.value})}
 
     handleUnitChange = value => this.setState({unit: value})
 

@@ -1,5 +1,5 @@
 const convertDate = (date) => {
-    const options = { weekday: 'short', day: 'numeric'}
+    const options = { day: 'numeric', weekday: 'short'}
     const formattedDate = new Date(`${date.split("-")}`)
     return formattedDate.toLocaleDateString("en-us", options)
 }
