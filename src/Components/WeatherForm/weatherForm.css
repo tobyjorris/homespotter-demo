@@ -1,0 +1,22 @@
+.weatherForm {
+    margin-top: 15px;
+}
+
+.weatherFormRow {
+    background: lightgrey;
+    padding-top: 15px;
+}
+
+.unit-opts-col {
+    margin-bottom: 15px;
+}
+
+.locationAlert {
+    color: red;
+}
+
+@media (min-width: 576px) {
+    .unit-opts-col {
+        margin-left: 45px;
+    }
+}

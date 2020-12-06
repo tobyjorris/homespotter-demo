@@ -1,0 +1,35 @@
+.weatherLocation {
+    margin-top: 15px;
+}
+
+@media (max-width: 576px)  {
+    .weatherLocation {
+        font-size: 1.3rem;
+    }
+
+    .detailsTitle {
+        font-size: 1.3rem;
+    }
+
+    .currentConditionsDetails {
+        font-size: .8rem;
+    }
+
+    .currentCol {
+        padding: 0 5px !important;
+    }
+
+    .forecastDetails {
+        font-size: .7rem;
+    }
+
+    .date {
+        font-size: .8rem;
+    }
+
+    .forecastCol {
+        padding: 0!important;
+        text-align: start!important;
+    }
+
+}
