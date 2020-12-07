@@ -12,7 +12,7 @@ class WeatherForm extends Component {
         noLocationFound: false
     }
 
-    // used to detect stored state in localStorage, and update the UI if it finds it
+    // used to detect stored state in localStorage, and update the UI if it finds it upon component Mount
     componentDidMount() {
         if (window.localStorage.getItem('state') !== null) {
             const localState = JSON.parse(localStorage.getItem('state'));

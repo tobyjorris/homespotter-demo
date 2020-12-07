@@ -15,12 +15,12 @@ To add flexibility to the data returned by WeatherAPI, there is a toggle to swit
 
 `weatherForm.js` also utilizes local storage to persist the user's last search. The entire state object is sent to local storage upon successful return of the API data. Consequently, `componentDidMount()` is utilized to check for any store state in local storage and update the UI if it finds anything. 
 
-####Helper Methods
+#### Helper Methods
 The first helper method is `dateConvertor.js`. This allows for transformation of the forecast dates returned by WeatherAPI from a format of year/month/day (xxxx/xx/xx) to a more user friendly day/date (ex: 8 Tue)
 
 The second helper method is `getWeatherInfo.js`, and is responsible for fetching data from WeatherAPI, and was abstracted to a helper method to keep the `weatherForm.js` file lean.
 
-###Important Note
+### Important Note
 Free accounts through WeatherAPI limit forecasts to 3 days, including 'today'. Ideally, for the forecast section to get a true 3 day forecase NOT including the day the user submits a request, you would change the `baseURL` query string to end with `&days=4`, then add `.slice(1)` in `weatherDisplay.js` where the forecast array is mapped over. This would allow the forecast to not include the day that is also displayed above in the 'Current' weather section.
 
 ## Available Scripts
