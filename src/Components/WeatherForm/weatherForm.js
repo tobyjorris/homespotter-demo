@@ -16,7 +16,6 @@ class WeatherForm extends Component {
     componentDidMount() {
         if (window.localStorage.getItem('state') !== null) {
             const localState = JSON.parse(localStorage.getItem('state'));
-            console.log('localState', localState.unit)
             this.setState(()=> ({
                 weather: localState.weather,
                 zipCode: localState.zipCode,
