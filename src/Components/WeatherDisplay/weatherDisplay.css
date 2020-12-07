@@ -2,6 +2,17 @@
     margin-top: 15px;
 }
 
+span {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1.2rem;
+}
+
+.slash {
+    margin: 0 3px;
+}
+
 @media (max-width: 576px)  {
     .weatherLocation {
         font-size: 1.3rem;
@@ -23,13 +34,12 @@
         font-size: .7rem;
     }
 
-    .date {
-        font-size: .8rem;
+    span {
+        font-size: .75rem;
     }
 
     .forecastCol {
         padding: 0!important;
-        text-align: start!important;
     }
 
 }

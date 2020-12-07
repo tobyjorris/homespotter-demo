@@ -52,8 +52,8 @@ class WeatherForm extends Component {
                 <Row className="weatherFormRow">
                     <Col className="d-flex justify-content-center align-content-center unit-opts-col" xs={12} sm={3}>
                         <ToggleButtonGroup  type="radio" name="options" defaultValue='fahrenheit' onChange={this.handleUnitChange}>
-                            <ToggleButton variant="info" value='fahrenheit'>Fahrenheit</ToggleButton>
-                            <ToggleButton variant="info" value='celsius'>Celsius</ToggleButton>
+                            <ToggleButton variant="outline-info" value='fahrenheit'>Fahrenheit</ToggleButton>
+                            <ToggleButton variant="outline-info" value='celsius'>Celsius</ToggleButton>
                         </ToggleButtonGroup>
                     </Col>
                     <Col className="d-flex justify-content-center form-col" xs={12} sm={8}>
@@ -65,7 +65,7 @@ class WeatherForm extends Component {
                                     </Form.Group>
                                 </Col>
                                 <Col xs={4}>
-                                    <Button className="submitButton" variant="primary" type="submit" >
+                                    <Button className="submitButton" variant="success" type="submit" >
                                         Submit
                                     </Button>
                                 </Col>

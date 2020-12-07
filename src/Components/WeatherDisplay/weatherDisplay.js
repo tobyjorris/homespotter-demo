@@ -48,12 +48,13 @@ const WeatherDisplay = props => {
             {props.weather.forecast.forecastday.map(day =>
                 <Row key={day.date}>
                     <Col className="d-flex justify-content-center forecastCol">
-                        <h4 className="date">{ConvertDate(day.date)}</h4>
+                        <span className="date">{ConvertDate(day.date)}</span>
                     </Col>
                     {props.unit === 'fahrenheit' &&
                     <React.Fragment>
                         <Col className="d-flex justify-content-center forecastDetails forecastCol">
-                            <span><strong>{day.day.maxtemp_f}&#8457;</strong> /</span>
+                            <span><strong>{day.day.maxtemp_f}&#8457;</strong></span>
+                            <span className="slash"> / </span>
                             <span> {day.day.mintemp_f}&#8457;</span>
                         </Col>
                         <Col className="d-flex justify-content-center forecastDetails forecastCol">
@@ -64,7 +65,8 @@ const WeatherDisplay = props => {
                     {props.unit === 'celsius' &&
                     <React.Fragment>
                         <Col className="d-flex justify-content-center forecastDetails forecastCol">
-                            <span><strong>{day.day.maxtemp_c}&#8451;</strong> / </span>
+                            <span><strong>{day.day.maxtemp_c}&#8451;</strong></span>
+                            <span className="slash"> / </span>
                             <span>{day.day.mintemp_c}&#8451;</span>
                         </Col>
                         <Col className="d-flex justify-content-center forecastDetails forecastCol">

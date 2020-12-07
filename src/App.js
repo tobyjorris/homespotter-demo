@@ -13,9 +13,9 @@ function App() {
             </Row>
             <Row className="justify-content-center">
                 <Col className="d-flex align-items-center justify-content-center">
-                    <span className="weatherAPI">Powered by
+                    <h2 className="weatherAPI">Powered by
                         <a rel="noopener noreferrer" target="_blank" href="https://www.weatherapi.com/" title="Weather API"> WeatherAPI.com</a>
-                    </span>
+                    </h2>
                 </Col>
             </Row>
             <WeatherForm />
