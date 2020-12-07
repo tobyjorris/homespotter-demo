@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Form, Button, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import './weatherForm.css';
 import WeatherDisplay from "../WeatherDisplay/weatherDisplay";
@@ -12,6 +12,7 @@ class WeatherForm extends Component {
         noLocationFound: false
     }
 
+    // used to detect stored state in localStorage, and update the UI if it finds it
     componentDidMount() {
         if (window.localStorage.getItem('state') !== null) {
             const localState = JSON.parse(localStorage.getItem('state'));
@@ -23,17 +24,15 @@ class WeatherForm extends Component {
                 noLocationFound: localState.noLocationFound
             }))
         }
-        console.log(this.state)
     }
 
-    // handles form submission, triggers the call to WeatherAPI
+    // handles form submission, triggers the call to WeatherAPI, sets most recent state to localStorage
     handleSubmit = event => {
         event.preventDefault();
         getWeatherInfo(this.state.zipCode).then(weatherData => {
             if (weatherData.error) {
                 this.setState({noLocationFound: true})
             } else {
-                console.log(weatherData)
                 this.setState({weather: weatherData, noLocationFound: false});
                 const stateJSON = JSON.stringify(this.state)
                 localStorage.setItem('state', stateJSON)
