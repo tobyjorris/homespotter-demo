@@ -13,7 +13,7 @@ It allows a user to enter a zipcode, and returns the current weather for that lo
 ## Standout Features
 To add flexibility to the data returned by WeatherAPI, there is a toggle to switch between Fahrenheit and Celsius. The toggle value is stored in the state of `weatherForm.js` component, and will therefore trigger a re-render of the `weatherDisplay.js` component since state is passed to it as props. This allows the user to toggle between Fahrenheit and Celsius without having to reach back out to the WeatherAPI.
 
-`weatherForm.js` also utilizes local storage to persist the user's last search. The entire state object is sent to local storage upon successful return of the API data. Consequently, `componentDidMount()` is utilized to check for any store state in local storage and update the UI if it finds anything. 
+`weatherForm.js` also utilizes local storage to persist the user's last search. The entire state object is sent to local storage upon successful return of the API data. Consequently, `componentDidMount()` is utilized to check for any store state in local storage and update the UI if it finds anything upon page reload. 
 
 #### Helper Methods
 The first helper method is `dateConvertor.js`. This allows for transformation of the forecast dates returned by WeatherAPI from a format of year/month/day (xxxx/xx/xx) to a more user friendly day/date (ex: 8 Tue)
