@@ -8,7 +8,7 @@ Technology used includes:
 - [Weather API](https://www.weatherapi.com/)
 - [Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart)
 
-It allows a user to enter a zipcode, and returns the current weather for that location in addition to a three-day forecast of low, high, and average temperatures.
+It allows a user to enter a zipcode, and returns the current weather for that location in addition to a three-day forecast of low, high, and average temperatures. If the location cannot be found (receives an error back from the API), it displays an error message for the user that is dismissed once a new location is found.
 
 ## Standout Features
 To add flexibility to the data returned by WeatherAPI, there is a toggle to switch between Fahrenheit and Celsius. The toggle value is stored in the state of `weatherForm.js` component, and will therefore trigger a re-render of the `weatherDisplay.js` component since state is passed to it as props. This allows the user to toggle between Fahrenheit and Celsius without having to reach back out to the WeatherAPI.
