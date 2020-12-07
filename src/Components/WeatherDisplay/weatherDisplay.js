@@ -1,9 +1,9 @@
 import React from 'react';
 import './weatherDisplay.css';
 import { Container, Row, Col } from "react-bootstrap";
-import ConvertDate from '../../Helpers/dateConvertor';
+import ConvertDate from '../../Helpers/dateConvertor/dateConvertor';
 
-const WeatherDisplay = (props) => {
+const WeatherDisplay = props => {
     return (
         <Container fluid>
             <Row>
@@ -44,6 +44,7 @@ const WeatherDisplay = (props) => {
                     <h3 className="detailsTitle">Forecast</h3>
                 </Col>
             </Row>
+            {/*could add .slice(1) here after forecastday, before map if returning 4+ days of forecast (see note in README.md) */}
             {props.weather.forecast.forecastday.map(day =>
                 <Row key={day.date}>
                     <Col className="d-flex justify-content-center forecastCol">

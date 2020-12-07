@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Container, Row, Col, Form, Button, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import './weatherForm.css';
 import WeatherDisplay from "../WeatherDisplay/weatherDisplay";
+import getWeatherInfo from "../../Helpers/getWeatherInfo/getWeatherInfo";
 
 class WeatherForm extends Component {
     state = {
@@ -10,7 +11,6 @@ class WeatherForm extends Component {
         unit: 'fahrenheit',
         noLocationFound: false
     }
-    baseURL = `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHERAPI_KEY}&days=4&q=`
 
     componentDidMount() {
         if (window.localStorage.getItem('state') !== null) {
@@ -26,30 +26,25 @@ class WeatherForm extends Component {
         console.log(this.state)
     }
 
-    getWeatherInfo = async (location) => {
-        const request = await fetch(this.baseURL + location)
-        try {
-            return request.json();
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    handleSubmit = (event) => {
+    // handles form submission, triggers the call to WeatherAPI
+    handleSubmit = event => {
         event.preventDefault();
-        this.getWeatherInfo(this.state.zipCode).then(weatherData => {
+        getWeatherInfo(this.state.zipCode).then(weatherData => {
             if (weatherData.error) {
                 this.setState({noLocationFound: true})
             } else {
+                console.log(weatherData)
                 this.setState({weather: weatherData, noLocationFound: false});
-                const json = JSON.stringify(this.state)
-                localStorage.setItem('state', json)
+                const stateJSON = JSON.stringify(this.state)
+                localStorage.setItem('state', stateJSON)
             }
         })
     }
 
-    handleChange = (event) => {this.setState({zipCode: event.target.value})}
+    // handles capturing the input from the zip code input
+    handleChange = event => this.setState({zipCode: event.target.value})
 
+    // handles toggling the units from Fahrenheit to Celsius
     handleUnitChange = value => this.setState({unit: value})
 
     render() { return (
